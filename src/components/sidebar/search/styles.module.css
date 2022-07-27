@@ -1,0 +1,78 @@
+.search {
+  display: flex;
+  align-items: center;
+
+  height: 49px;
+  border-bottom: 1px solid #e9edef;
+
+  padding-left: 12px;
+}
+
+.search__input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 35px;
+  border-radius: 8px;
+
+  background-color: #e9edef;
+  padding: inherit;
+  padding-right: 7px;
+
+  position: relative;
+}
+
+.search__input > :global(.MuiIconButton-root) {
+  width: 24px;
+  height: 24px;
+}
+
+.search__input > :global(.MuiIconButton-root) > svg {
+  font-size: 20px;
+}
+
+.input__group {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+
+  width: 100%;
+  padding-left: 30px;
+}
+
+.input__group > input {
+  appearance: none;
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+
+  width: 100%;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.placeholder {
+  position: absolute;
+
+  pointer-events: none;
+
+  color: #667781;
+  font-size: 14px;
+  text-overflow: ellipsis;
+}
+
+.search__filter {
+  margin: 0 8px;
+}
+
+.search__filter > :global(.MuiIconButton-root) {
+  width: 24px;
+  height: 24px;
+}
+
+.search__filter > :global(.MuiIconButton-root) > svg {
+  font-size: 20px;
+}
