@@ -1,0 +1,23 @@
+.body {
+  flex: 1;
+  background-image: url("../../../assets/chat-bg.png");
+  background-repeat: repeat;
+  background-position: center;
+
+  padding: 30px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.body > div {
+  flex: 1;
+}
+
+.messages {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
