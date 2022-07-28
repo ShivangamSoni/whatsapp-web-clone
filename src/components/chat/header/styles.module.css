@@ -1,0 +1,38 @@
+.header {
+  height: 59px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 16px;
+  background-color: #f0f2f5;
+
+  border-left: 1px solid #d1d7db;
+}
+
+.header_info {
+  display: flex;
+  align-items: center;
+}
+
+.info__avatar {
+  padding-right: 15px;
+}
+
+.info__user {
+  font-size: 16px;
+  font-weight: 400;
+  color: #111b21;
+}
+
+.info__status {
+  font-size: 13px;
+  color: #667781;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
