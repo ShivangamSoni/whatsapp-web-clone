@@ -1,0 +1,9 @@
+.sidebar {
+  flex: 30%;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  background-color: #fff;
+  border-right: 1px solid #e9edef;
+}

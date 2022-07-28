@@ -1,4 +1,4 @@
-import "./styles.css";
+import styles from "./styles.module.css";
 
 import SidebarHeader from "../../components/sidebar/header/Header";
 import SidebarSearch from "../../components/sidebar/search/Search";
@@ -6,7 +6,7 @@ import SidebarChatListing from "../../components/sidebar/chatListing/ChatListing
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className={styles.sidebar}>
       <SidebarHeader />
 
       <SidebarSearch />
