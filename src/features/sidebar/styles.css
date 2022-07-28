@@ -1,5 +1,5 @@
 .sidebar {
-  flex: 40%;
+  flex: 30%;
 
   display: flex;
   flex-flow: column nowrap;

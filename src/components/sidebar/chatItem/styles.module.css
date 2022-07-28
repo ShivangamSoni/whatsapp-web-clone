@@ -1,0 +1,54 @@
+.chat {
+  height: 72px;
+
+  display: flex;
+
+  cursor: pointer;
+}
+
+.chat:hover {
+  background-color: #f5f6f6;
+}
+
+.chat.active {
+  background-color: #f0f2f5;
+}
+
+.chat__avatar {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  padding-left: 13px;
+  padding-right: 15px;
+}
+
+.chat__avatar > :global(.MuiAvatar-root) {
+  width: 49px;
+  height: 49px;
+}
+
+.chat + .chat .chat__info {
+  border-top: 1px solid #e9edef;
+}
+
+.chat__info {
+  flex: 1;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  padding-right: 15px;
+}
+
+.info__user {
+  font-size: 17px;
+  font-weight: 400;
+  color: #111b21;
+}
+
+.info__message {
+  font-size: 14px;
+  color: #3b4a54;
+}
