@@ -33,6 +33,15 @@
   font-size: 20px;
 }
 
+.input__back {
+  color: #00a884 !important;
+  transform: rotate(0.25turn) !important;
+  transition: transform 250ms linear !important;
+}
+.input__back > svg {
+  font-size: 24px !important;
+}
+
 .input__group {
   display: flex;
   align-items: center;
