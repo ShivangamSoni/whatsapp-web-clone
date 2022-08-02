@@ -7,3 +7,21 @@
   background-color: #fff;
   border-right: 1px solid #e9edef;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .sidebar {
+    flex: 35%;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1024px) {
+  .sidebar {
+    flex: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sidebar {
+    flex: 45%;
+  }
+}
