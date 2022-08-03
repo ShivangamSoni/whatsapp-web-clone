@@ -1,3 +1,5 @@
+import { BrowserRouter } from "react-router-dom";
+
 import "./assets/global.css";
 import "./app.css";
 
@@ -8,8 +10,10 @@ const App = () => {
   return (
     <div className="app">
       <div className="app__body">
-        <Sidebar />
-        <Chat />
+        <BrowserRouter>
+          <Sidebar />
+          <Chat />
+        </BrowserRouter>
       </div>
     </div>
   );

@@ -6,16 +6,18 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 import styles from "./styles.module.css";
 
-const ChatHeader = () => {
+const ChatHeader = ({ id, name }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header_info}>
         <div className={styles.info__avatar}>
-          <Avatar />
+          <Avatar
+            src={`https://avatars.dicebear.com/api/bottts/${id}.svg?b=%23e9edef`}
+          />
         </div>
 
         <div>
-          <h2 className={styles.info__user}>Name</h2>
+          <h2 className={styles.info__user}>{name}</h2>
           <span className={styles.info__status}>Status</span>
         </div>
       </div>
