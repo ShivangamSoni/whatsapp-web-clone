@@ -9,8 +9,13 @@ import { collection, addDoc } from "firebase/firestore";
 import db from "../../../firebase/firebase";
 
 import styles from "./styles.module.css";
+import useUser from "../../../context/user";
 
 const SidebarHeader = () => {
+  const {
+    user: { imageURL },
+  } = useUser();
+
   const createRoom = async () => {
     // TODO: Modal
     const roomName = prompt("Enter a Name for the Chat Room:");
@@ -23,7 +28,7 @@ const SidebarHeader = () => {
   return (
     <header className={styles.header}>
       <div>
-        <Avatar />
+        <Avatar src={imageURL} />
       </div>
 
       <div className={styles.header__options}>
