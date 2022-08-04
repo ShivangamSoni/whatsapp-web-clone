@@ -33,7 +33,7 @@
 }
 
 .message {
-  display: flex;
+  min-width: 150px;
   max-width: 65%;
 
   border-radius: 7.5px 0 7.5px 7.5px;
@@ -47,6 +47,11 @@
 
   box-shadow: 0 1px 0.5px rgba(11, 20, 26, 0.13);
   position: relative;
+}
+
+.message__name {
+  font-size: 0.6875rem;
+  color: #667781;
 }
 
 .message__content {

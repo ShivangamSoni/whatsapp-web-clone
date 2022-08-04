@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+import { useParams } from "react-router-dom";
 
 import IconButton from "@mui/material/IconButton";
 
@@ -6,10 +8,42 @@ import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlin
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
+import db from "../../../firebase/firebase";
+
+import { useSelector } from "../../../context/stateContext";
+
 import styles from "./styles.module.css";
 
 const ChatFooter = () => {
+  const { roomId } = useParams();
+  const { name, id } = useSelector((state) => state.user);
   const [text, setText] = useState("");
+  const inputRef = useRef(null);
+
+  const handleSubmit = async () => {
+    const message = {
+      userId: id,
+      name,
+      message: text,
+    };
+
+    const docRef = await addDoc(
+      collection(db, `chatrooms/${roomId}/messages`),
+      message,
+    );
+    await updateDoc(docRef, {
+      timestamp: serverTimestamp(),
+    });
+
+    setText("");
+    inputRef.current.textContent = "";
+  };
 
   const hasValue = text.length > 0;
 
@@ -36,6 +70,7 @@ const ChatFooter = () => {
           )}
 
           <div
+            ref={inputRef}
             className={styles.input}
             onInput={(e) => setText(e.target.textContent)}
             contentEditable
@@ -44,7 +79,7 @@ const ChatFooter = () => {
         </div>
 
         <div className={styles.input__btn}>
-          <IconButton>
+          <IconButton onClick={handleSubmit}>
             <SendOutlinedIcon />
           </IconButton>
         </div>

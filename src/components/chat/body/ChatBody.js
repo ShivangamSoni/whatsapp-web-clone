@@ -6,13 +6,13 @@ import styles from "./styles.module.css";
 
 import ChatMessage from "../chatMessage/ChatMessage";
 
-const ChatBody = () => {
+const ChatBody = ({ messages }) => {
   return (
     <main className={styles.body}>
       <div></div>
       <div className={styles.messages}>
-        {[...Array(10).keys()].map((idx) => (
-          <ChatMessage key={idx} isSend={idx % 2} />
+        {messages.map(({ id, data }) => (
+          <ChatMessage key={id} {...data} />
         ))}
 
         <div className={styles.scroll}>
