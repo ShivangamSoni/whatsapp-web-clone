@@ -6,7 +6,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 import styles from "./styles.module.css";
 
-const ChatHeader = ({ id, name }) => {
+const ChatHeader = ({ id, name, lastSeen }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header_info}>
@@ -18,7 +18,7 @@ const ChatHeader = ({ id, name }) => {
 
         <div>
           <h2 className={styles.info__user}>{name}</h2>
-          <span className={styles.info__status}>Status</span>
+          <span className={styles.info__status}>{lastSeen}</span>
         </div>
       </div>
 

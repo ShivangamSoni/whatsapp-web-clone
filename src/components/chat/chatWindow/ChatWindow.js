@@ -59,9 +59,16 @@ const ChatWindow = () => {
     }
   }, [roomId]);
 
+  const lastSeen =
+    messages.length > 0
+      ? new Date(
+          messages[messages.length - 1].data.timestamp.toDate(),
+        ).toLocaleString()
+      : "";
+
   return (
     <div className={styles.window}>
-      <ChatHeader id={roomId} name={roomName} />
+      <ChatHeader id={roomId} name={roomName} lastSeen={lastSeen} />
       <ChatBody messages={messages} />
       <ChatFooter />
     </div>
