@@ -4,16 +4,21 @@ import { BrowserRouter } from "react-router-dom";
 import { getRedirectResult } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 
+import useState from "./context/stateContext";
+import { setUser } from "./context/UserState/actions";
+
 import "./assets/global.css";
 import "./app.css";
 
 import Sidebar from "./features/sidebar/Sidebar";
 import Chat from "./features/chat/Chat";
 import Login from "./features/login/login";
-import useUser from "./context/user";
 
 const App = () => {
-  const { user, setUser } = useUser();
+  const {
+    state: { user },
+    dispatch,
+  } = useState();
 
   useEffect(() => {
     getRedirectResult(auth).then((result) => {
@@ -24,10 +29,10 @@ const App = () => {
 
         const user = { id: uid, name: displayName, imageURL: photoURL };
 
-        setUser(user);
+        dispatch(setUser(user));
       }
     });
-  }, [setUser]);
+  }, [dispatch]);
 
   return (
     <div className="app">

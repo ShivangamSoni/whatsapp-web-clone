@@ -1,11 +1,13 @@
 import { createRoot } from "react-dom/client";
 
 import App from "./App";
-import { UserProvider } from "./context/user";
+
+import { StateProvider } from "./context/stateContext";
+import { reducer, initialState } from "./context/store";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-  <UserProvider>
+  <StateProvider reducer={reducer} initialState={initialState}>
     <App />
-  </UserProvider>,
+  </StateProvider>,
 );

@@ -8,13 +8,16 @@ import ChatIcon from "@mui/icons-material/Chat";
 import { collection, addDoc } from "firebase/firestore";
 import db from "../../../firebase/firebase";
 
+import useState from "../../../context/stateContext";
+
 import styles from "./styles.module.css";
-import useUser from "../../../context/user";
 
 const SidebarHeader = () => {
   const {
-    user: { imageURL },
-  } = useUser();
+    state: {
+      user: { imageURL },
+    },
+  } = useState();
 
   const createRoom = async () => {
     // TODO: Modal
