@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { getRedirectResult } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 
-import useState from "./context/stateContext";
+import { useDispatch, useSelector } from "./context/stateContext";
 import { setUser } from "./context/UserState/actions";
 
 import "./assets/global.css";
@@ -15,10 +15,8 @@ import Chat from "./features/chat/Chat";
 import Login from "./features/login/login";
 
 const App = () => {
-  const {
-    state: { user },
-    dispatch,
-  } = useState();
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getRedirectResult(auth).then((result) => {

@@ -1,9 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
-const StateContext = createContext({ state: {}, dispatch: () => {} });
+const StateContext = createContext();
 
-const StateProvider = ({ reducer, initialState = {}, children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const StateProvider = ({ reducer, children }) => {
+  const [state, dispatch] = useReducer(reducer, {});
+
+  useEffect(() => dispatch({ type: "Initialize State" }), []);
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>
@@ -12,7 +14,8 @@ const StateProvider = ({ reducer, initialState = {}, children }) => {
   );
 };
 
-const useState = () => useContext(StateContext);
+export default StateProvider;
 
-export default useState;
-export { StateProvider };
+export const useSelector = (selector) =>
+  selector(useContext(StateContext).state);
+export const useDispatch = () => useContext(StateContext).dispatch;

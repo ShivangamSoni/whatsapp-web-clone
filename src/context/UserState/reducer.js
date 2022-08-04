@@ -1,6 +1,8 @@
 import USER_ACTIONS from "./actions";
 
-const userReducer = (state, { type, payload }) => {
+const initialState = null;
+
+const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case USER_ACTIONS.SET_USER:
       return { ...payload };
@@ -8,7 +10,5 @@ const userReducer = (state, { type, payload }) => {
       return state;
   }
 };
-
-export const userInitialState = null;
 
 export default userReducer;

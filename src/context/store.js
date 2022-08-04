@@ -1,9 +1,7 @@
 import combineReducers from "../utils/combineReducers";
 
-import userReducer, { userInitialState } from "./UserState/reducer";
+import userReducer from "./UserState/reducer";
 
-export const reducer = combineReducers({ user: userReducer });
+const reducer = combineReducers({ user: userReducer });
 
-export const initialState = {
-  user: userInitialState,
-};
+export default reducer;
