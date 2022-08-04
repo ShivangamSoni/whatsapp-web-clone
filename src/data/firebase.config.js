@@ -1,21 +1,11 @@
-const {
-  REACT_APP_FIREBASE_API_KEY,
-  REACT_APP_FIREBASE_AUTH_DOMAIN,
-  REACT_APP_FIREBASE_PROJECT_ID,
-  REACT_APP_FIREBASE_STORAGE_BUCKET,
-  REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  REACT_APP_FIREBASE_APP_ID,
-  REACT_APP_FIREBASE_MEASUREMENT_ID,
-} = process.env;
-
 const firebaseConfig = {
-  apiKey: REACT_APP_FIREBASE_API_KEY,
-  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: REACT_APP_FIREBASE_APP_ID,
-  measurementId: REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyD8x3hxqgbMCylF-XdZhGKJ7N2CDFi7UU4",
+  authDomain: "shivi-whatsapp-clone.firebaseapp.com",
+  projectId: "shivi-whatsapp-clone",
+  storageBucket: "shivi-whatsapp-clone.appspot.com",
+  messagingSenderId: "162107967484",
+  appId: "1:162107967484:web:59862cfdb08697fca15479",
+  measurementId: "G-68EH8V4M33",
 };
 
 export default firebaseConfig;

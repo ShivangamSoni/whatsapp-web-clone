@@ -1,5 +1,7 @@
 import { createRoot } from "react-dom/client";
 
+import "./assets/global.css";
+
 import App from "./App";
 
 import StateProvider from "./context/stateContext";
