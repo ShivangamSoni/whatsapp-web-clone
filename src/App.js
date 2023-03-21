@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { getRedirectResult } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 
 import { useDispatch, useSelector } from "./context/stateContext";
@@ -14,37 +13,32 @@ import Chat from "./features/chat/Chat";
 import Login from "./features/login/login";
 
 const App = () => {
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    getRedirectResult(auth).then((result) => {
-      if (result) {
-        const {
-          user: { displayName, photoURL, uid },
-        } = result;
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                const { displayName: name, photoURL: imageURL, uid: id } = user;
+                dispatch(setUser({ id, name, imageURL }));
+            }
+        });
+    }, [dispatch]);
 
-        const user = { id: uid, name: displayName, imageURL: photoURL };
-
-        dispatch(setUser(user));
-      }
-    });
-  }, [dispatch]);
-
-  return (
-    <div className={styles.app}>
-      <BrowserRouter>
-        {user ? (
-          <div className={styles.app__body}>
-            <Sidebar />
-            <Chat />
-          </div>
-        ) : (
-          <Login />
-        )}
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <div className={styles.app}>
+            <BrowserRouter>
+                {user ? (
+                    <div className={styles.app__body}>
+                        <Sidebar />
+                        <Chat />
+                    </div>
+                ) : (
+                    <Login />
+                )}
+            </BrowserRouter>
+        </div>
+    );
 };
 
 export default App;
