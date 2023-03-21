@@ -1,16 +1,17 @@
 .header {
-  height: 59px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    height: 59px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  padding: 10px 16px;
-  background-color: #f0f2f5;
+    padding: 10px 16px;
+    background-color: #f0f2f5;
+    border-bottom: 2px solid #fff;
 }
 
 .header__options {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }

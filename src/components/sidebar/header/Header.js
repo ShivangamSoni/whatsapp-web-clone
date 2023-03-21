@@ -3,14 +3,15 @@ import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import DonutLargeIcon from "@mui/icons-material/DonutLarge";
-import ChatIcon from "@mui/icons-material/Chat";
+import AddChatIcon from "@mui/icons-material/AddComment";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 import { collection, addDoc } from "firebase/firestore";
-import db from "../../../firebase/firebase";
+import { signOut } from "firebase/auth";
+import db, { auth } from "../../../firebase/firebase";
 
-import { useSelector } from "../../../context/stateContext";
+import { useDispatch, useSelector } from "../../../context/stateContext";
+import { setUser } from "../../../context/UserState/actions";
 
 import styles from "./styles.module.css";
 
@@ -18,12 +19,23 @@ import Modal from "@mui/material/Modal";
 import CreateRoomModal from "../createRoomModal/CreateRoomModal";
 
 const SidebarHeader = () => {
-    const [showRoomModal, setShowRoomModal] = useState(false);
+    const dispatch = useDispatch();
     const { imageURL } = useSelector((state) => state.user);
+
+    const [showRoomModal, setShowRoomModal] = useState(false);
 
     const createRoom = async (roomName) => {
         await addDoc(collection(db, "chatrooms"), { name: roomName });
         setShowRoomModal(false);
+    };
+
+    const handleSignOut = async () => {
+        try {
+            await signOut(auth);
+            dispatch(setUser(null));
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (
@@ -33,19 +45,15 @@ const SidebarHeader = () => {
             </div>
 
             <div className={styles.header__options}>
-                <IconButton>
-                    <DonutLargeIcon />
-                </IconButton>
-
                 <IconButton
                     title="Create New Chat Room"
                     onClick={() => setShowRoomModal(true)}
                 >
-                    <ChatIcon />
+                    <AddChatIcon />
                 </IconButton>
 
-                <IconButton>
-                    <MoreVertIcon />
+                <IconButton title="LogOut" onClick={handleSignOut}>
+                    <LogoutIcon />
                 </IconButton>
             </div>
 

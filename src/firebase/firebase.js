@@ -7,7 +7,6 @@ import {
     GoogleAuthProvider,
     setPersistence,
     browserLocalPersistence,
-    signInWithPopup,
 } from "firebase/auth";
 
 const app = initializeApp(firebaseConfig);
@@ -17,8 +16,6 @@ export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 
 // Persist Auth
-setPersistence(auth, browserLocalPersistence).then(() =>
-    signInWithPopup(auth, provider),
-);
+setPersistence(auth, browserLocalPersistence);
 
 export default db;
