@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 
@@ -12,39 +14,46 @@ import { useSelector } from "../../../context/stateContext";
 
 import styles from "./styles.module.css";
 
+import Modal from "@mui/material/Modal";
+import CreateRoomModal from "../createRoomModal/CreateRoomModal";
+
 const SidebarHeader = () => {
-  const { imageURL } = useSelector((state) => state.user);
+    const [showRoomModal, setShowRoomModal] = useState(false);
+    const { imageURL } = useSelector((state) => state.user);
 
-  const createRoom = async () => {
-    // TODO: Modal
-    const roomName = prompt("Enter a Name for the Chat Room:");
+    const createRoom = async (roomName) => {
+        await addDoc(collection(db, "chatrooms"), { name: roomName });
+        setShowRoomModal(false);
+    };
 
-    if (roomName) {
-      await addDoc(collection(db, "chatrooms"), { name: roomName });
-    }
-  };
+    return (
+        <header className={styles.header}>
+            <div>
+                <Avatar src={imageURL} />
+            </div>
 
-  return (
-    <header className={styles.header}>
-      <div>
-        <Avatar src={imageURL} />
-      </div>
+            <div className={styles.header__options}>
+                <IconButton>
+                    <DonutLargeIcon />
+                </IconButton>
 
-      <div className={styles.header__options}>
-        <IconButton>
-          <DonutLargeIcon />
-        </IconButton>
+                <IconButton
+                    title="Create New Chat Room"
+                    onClick={() => setShowRoomModal(true)}
+                >
+                    <ChatIcon />
+                </IconButton>
 
-        <IconButton title="Create New Chat Room" onClick={createRoom}>
-          <ChatIcon />
-        </IconButton>
+                <IconButton>
+                    <MoreVertIcon />
+                </IconButton>
+            </div>
 
-        <IconButton>
-          <MoreVertIcon />
-        </IconButton>
-      </div>
-    </header>
-  );
+            <Modal open={showRoomModal} onClose={() => setShowRoomModal(false)}>
+                <CreateRoomModal onSubmit={createRoom} />
+            </Modal>
+        </header>
+    );
 };
 
 export default SidebarHeader;
